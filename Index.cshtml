@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FinalCaseStudy.Models.StudentDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Students</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Roll No")
+        </th>
+        <th>
+            @Html.Label("Name")
+        </th>
+        <th>
+            @Html.Label("Gender")
+        </th>
+        <th>
+            @Html.Label("Age")
+        </th>
+        <th>
+            @Html.Label("Course")
+        </th>
+        <th>
+            @Html.Label("Address")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.rollno)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Studentname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.age)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.course)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.address)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.rollno }) |
+        @Html.ActionLink("Details", "Details", new { id = item.rollno }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.rollno })
+    </td>
+</tr>
+}
+
+</table>
+
+@Html.ActionLink("Click to move to Course Details","Index","CourseDetails")

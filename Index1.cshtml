@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FinalCaseStudy.Models.BatchDetail>
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Number of students in each batch.</h2>
+@if (!Model.Any())
+{
+    <p>No data uploaded yet.</p>
+}
+else
+{
+    <table class="table table-striped" border="0">
+        <thead>
+            <tr>
+                <th scope="col">Batch</th>
+                <th scope="col">No. of students</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.GroupBy(u => u.batchno, (key, items) => new { Batch = key, Cost = items.Sum(u => u.noofstd) }))
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(_ => item.Batch)</td>
+                    <td scope="row">@Html.DisplayFor(_ => item.Cost)</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+<p><a class="btn btn-default" href="@Url.Action("Index5", "Reports")">&laquo; To Reports</a></p>

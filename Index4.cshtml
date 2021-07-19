@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FinalCaseStudy.Models.EnrollDetail>
+@{
+    ViewBag.Title = "Index4";
+}
+
+<h2>Enrollments per city.</h2>
+@if (!Model.Any())
+{
+    <p>No data uploaded yet.</p>
+}
+else
+{
+    <table class="table table-striped" border="0">
+        <thead>
+            <tr>
+                <th scope="col">City</th>
+                <th scope="col">Total Enrolled</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.GroupBy(u => u.city, (key, items) => new { Course = key, Cost = items.Sum(u => u.totalenroll) }))
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(_ => item.Course)</td>
+                    <td scope="row">@Html.DisplayFor(_ => item.Cost)</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+<p><a class="btn btn-default" href="@Url.Action("Index5", "Reports")">&laquo; To Reports</a></p>

@@ -1,0 +1,64 @@
+﻿@model FinalCaseStudy.Models.StudentDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Roll No:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rollno)
+        </dd>
+        <dt>
+            @Html.Label("Name:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Studentname)
+        </dd>
+
+        <dt>
+            @Html.Label("Gender:")
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.Label("Age:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.Label("Course:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.course)
+        </dd>
+
+        <dt>
+            @Html.Label("Address:")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.rollno }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

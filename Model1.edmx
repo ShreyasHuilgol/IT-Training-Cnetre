@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="classsqlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BatchDetails">
+          <Key>
+            <PropertyRef Name="batchno" />
+          </Key>
+          <Property Name="batchno" Type="int" Nullable="false" />
+          <Property Name="course" Type="varchar" MaxLength="50" />
+          <Property Name="timing" Type="varchar" MaxLength="20" />
+          <Property Name="noofstd" Type="int" />
+          <Property Name="vacant" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseDetails">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="course" Type="varchar" MaxLength="50" />
+          <Property Name="duration" Type="int" />
+          <Property Name="noofstd" Type="int" />
+          <Property Name="cost" Type="int" />
+        </EntityType>
+        <EntityType Name="EnrollDetails">
+          <Key>
+            <PropertyRef Name="pin" />
+          </Key>
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="pin" Type="int" Nullable="false" />
+          <Property Name="noofcenters" Type="int" />
+          <Property Name="totalenroll" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentDetails">
+          <Key>
+            <PropertyRef Name="rollno" />
+          </Key>
+          <Property Name="Studentname" Type="varchar" MaxLength="50" />
+          <Property Name="rollno" Type="int" Nullable="false" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+          <Property Name="age" Type="int" />
+          <Property Name="course" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="classsqlModelStoreContainer">
+          <EntitySet Name="BatchDetails" EntityType="Self.BatchDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDetails" EntityType="Self.CourseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnrollDetails" EntityType="Self.EnrollDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetails" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="classsqlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BatchDetail">
+          <Key>
+            <PropertyRef Name="batchno" />
+          </Key>
+          <Property Name="batchno" Type="Int32" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="timing" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="noofstd" Type="Int32" />
+          <Property Name="vacant" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CourseDetail">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="Int32" />
+          <Property Name="noofstd" Type="Int32" />
+          <Property Name="cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="EnrollDetail">
+          <Key>
+            <PropertyRef Name="pin" />
+          </Key>
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pin" Type="Int32" Nullable="false" />
+          <Property Name="noofcenters" Type="Int32" />
+          <Property Name="totalenroll" Type="Int32" />
+        </EntityType>
+        <EntityType Name="StudentDetail">
+          <Key>
+            <PropertyRef Name="rollno" />
+          </Key>
+          <Property Name="Studentname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rollno" Type="Int32" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="classsqlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BatchDetails" EntityType="Self.BatchDetail" />
+          <EntitySet Name="CourseDetails" EntityType="Self.CourseDetail" />
+          <EntitySet Name="EnrollDetails" EntityType="Self.EnrollDetail" />
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetail" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="classsqlModelStoreContainer" CdmEntityContainer="classsqlEntities">
+          <EntitySetMapping Name="BatchDetails">
+            <EntityTypeMapping TypeName="classsqlModel.BatchDetail">
+              <MappingFragment StoreEntitySet="BatchDetails">
+                <ScalarProperty Name="batchno" ColumnName="batchno" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="timing" ColumnName="timing" />
+                <ScalarProperty Name="noofstd" ColumnName="noofstd" />
+                <ScalarProperty Name="vacant" ColumnName="vacant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDetails">
+            <EntityTypeMapping TypeName="classsqlModel.CourseDetail">
+              <MappingFragment StoreEntitySet="CourseDetails">
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="noofstd" ColumnName="noofstd" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnrollDetails">
+            <EntityTypeMapping TypeName="classsqlModel.EnrollDetail">
+              <MappingFragment StoreEntitySet="EnrollDetails">
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="noofcenters" ColumnName="noofcenters" />
+                <ScalarProperty Name="totalenroll" ColumnName="totalenroll" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentDetails">
+            <EntityTypeMapping TypeName="classsqlModel.StudentDetail">
+              <MappingFragment StoreEntitySet="StudentDetails">
+                <ScalarProperty Name="Studentname" ColumnName="Studentname" />
+                <ScalarProperty Name="rollno" ColumnName="rollno" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="address" ColumnName="address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
